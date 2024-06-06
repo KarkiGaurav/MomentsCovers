@@ -9,7 +9,6 @@ import { signOut } from "@/auth.ts";
 const Navbar = async () => {
    const session = await auth();
    const user = session?.user;
-   console.log(user);
    const isAdmin = false;
    return (
       <nav className="sticky z-[100] h-14 inset-x-0 top-0 w-full border-b border-gray-200 bg-white/7 backdrop-blur-lg transition-all">
