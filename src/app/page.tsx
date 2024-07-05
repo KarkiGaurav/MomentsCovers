@@ -4,8 +4,6 @@ import Reviews from "@/components/Reviews";
 import { Icons } from "@/components/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { ArrowRight, BadgeCheck, Check, Star } from "lucide-react";
-import { Ingrid_Darling } from "next/font/google";
-import Image from "next/image";
 import Link from "next/link";
 
 
