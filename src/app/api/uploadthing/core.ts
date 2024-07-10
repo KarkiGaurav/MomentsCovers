@@ -1,6 +1,8 @@
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { z } from 'zod';
- 
+import sharp from 'sharp'
+import { db } from "@/db";
+
 const f = createUploadthing();
  
 
@@ -14,8 +16,38 @@ export const ourFileRouter = {
     .onUploadComplete(async ({ metadata, file }) => {
       const {configId} = metadata.input
       const res = await fetch(file.url)
- 
-      return { configId };
+      const buffer =  await res.arrayBuffer()
+
+      const imgMetadata = await sharp(buffer).metadata()
+      const {width, height} = imgMetadata
+
+      if (!configId) {
+       try{
+        const configuration = await db.configuration.create({
+          data: {
+            imgUrl: file.url,
+            height: height || 500,
+            width: width || 500,
+            croppedImageUrl: file.url,
+          },
+         })
+         console.log('Configuration saved:', configuration);
+         return {configId: configuration.id}
+       }catch(err){
+        console.error('Error in Databse Configuration:', err);
+       }
+
+      } else {
+        const updatedConfiguration = await db.configuration.update({
+          where: {
+            id: configId
+          },
+          data: {
+            croppedImageUrl: file.url
+          },
+        })    
+      return { configId: updatedConfiguration.id};
+      }
     }),
 } satisfies FileRouter;
  

@@ -12,5 +12,5 @@ model Configuration {
   width           Int
   height          Int
   imgUrl          String
-  croppedImageUrl String
+  croppedImageUrl String?
 }
