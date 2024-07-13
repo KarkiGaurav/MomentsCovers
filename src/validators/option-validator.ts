@@ -16,8 +16,8 @@ export const COLORS =[
         tw: 'blue-950'
     },
     {
-        label: 'Rosse',
-        value: 'rosse',
+        label: 'Rose',
+        value: 'rose',
         tw: 'rose-950'
     }
 ] as const
@@ -83,7 +83,7 @@ export const FINISHES = {
         },
         {
             label: 'Textured Finish',
-            value: 'textured finish',
+            value: 'textured',
             description: 'Soft grippy texture',
             price: PRODUCT_PRICE.finish.textured
         }
