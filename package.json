@@ -35,6 +35,7 @@
     "react-rnd": "^10.4.11",
     "rnd": "^1.0.10",
     "sharp": "^0.32.6",
+    "stripe": "^16.2.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "uploadthing": "^6.13.2",

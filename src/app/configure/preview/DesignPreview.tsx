@@ -6,16 +6,29 @@ import { BASE_PRICE } from "@/config/products"
 import { cn, formatPrice } from "@/lib/utils"
 import { COLORS, FINISHES, MATERIALS, MODELS } from "@/validators/option-validator"
 import { Configuration } from "@prisma/client"
+import { useMutation } from "@tanstack/react-query"
 import { ArrowRight, Check } from "lucide-react"
 import { useEffect, useState } from "react"
 import Confetti from 'react-dom-confetti'
+import { createCheckoutSession } from "./action"
+import { useRouter } from "next/navigation"
+import { useToast } from "@/components/ui/use-toast"
+import { auth } from "@/auth"
 
-const DesignPreview = ({ configuration}: {configuration: Configuration}) => {
+const DesignPreview =  ({ configuration}: {configuration: Configuration}) => {
+
+    const router = useRouter()
+    const { toast } = useToast()
+
+    const userSession = await auth()
+    const user = userSession?.user
+
+    const [isLoginModalOpen, setIsLoginModalOpen ] = useState<boolean>(false)
 
     const [showConfetti, setShowConfetti] = useState<boolean>(false)
     useEffect(() => setShowConfetti(true))
 
-    const { color, material, model, finish, croppedImageUrl } = configuration
+    const {id, color, material, model, finish, croppedImageUrl } = configuration
 
     const tw = COLORS.find((supportedColor) => supportedColor.value === color)?.tw
 
@@ -35,6 +48,31 @@ const DesignPreview = ({ configuration}: {configuration: Configuration}) => {
         totalPrice += finishPrice
     }
 
+    const { mutate: createPaymentSession} = useMutation({
+        mutationKey: ['get-checkout-session'],
+        mutationFn: createCheckoutSession,
+        onSuccess: ({ url }) => {
+            if (url) router.push(url)
+            else throw new Error('Unable tp retrieve payment URL.')
+        },
+        onError: () => {
+            toast({
+                title: 'Something went wrong',
+                description: 'There was an error on our end. Please try again.',
+                variant: 'destructive',
+            })
+        }
+      
+    })
+
+    const handleCheckout = () => {
+        if (user) {
+            createPaymentSession({ configId: id})
+        } else {
+            localStorage.setItem('configurationId', id)
+            setIsLoginModalOpen(true)
+        }
+    }
 
   return (
     <>
