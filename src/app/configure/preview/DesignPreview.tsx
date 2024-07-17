@@ -14,14 +14,16 @@ import { createCheckoutSession } from "./action"
 import { useRouter } from "next/navigation"
 import { useToast } from "@/components/ui/use-toast"
 import { auth } from "@/auth"
+import { useSession, SessionProvider } from 'next-auth/react';
+import LoginModal from "@/components/LoginModal"
 
 const DesignPreview =  ({ configuration}: {configuration: Configuration}) => {
 
     const router = useRouter()
     const { toast } = useToast()
 
-    const userSession = await auth()
-    const user = userSession?.user
+    const userSession = useSession()
+    const user = userSession?.data?.user
 
     const [isLoginModalOpen, setIsLoginModalOpen ] = useState<boolean>(false)
 
@@ -79,10 +81,11 @@ const DesignPreview =  ({ configuration}: {configuration: Configuration}) => {
         <div className="pointer-events-none select-none absolute inset-0 overflow-hidden flex justify-center" >
             <Confetti active={ showConfetti} config={{ elementCount: 200, spread: 90}} />
         </div>
-
+       
+       <LoginModal isOpen={isLoginModalOpen} setIsOpen={setIsLoginModalOpen}/>
         <div className="mt-20 flex flex-col items-center md:grid text-sm sm:grid-cols-12 sm:grid-rows-1 sm:gap-x-6 md:gap-x-8 lg:gap-x-12">
             <div className="md:col-span-4 lg:col-span-3 md:row-span-2 md:row-end-2">
-                <Phone className={cn(`bg-${tw}, "max-w-[150px] md:max-w-full"`)} imgSrc={croppedImageUrl!} />
+                <Phone className={cn(`bg-${tw} max-w-[150px] md:max-w-full`)} imgSrc={croppedImageUrl!} />
             </div>
 
             <div className="mt-9 sm:col-span-9 md:row-end-1">
@@ -155,7 +158,7 @@ const DesignPreview =  ({ configuration}: {configuration: Configuration}) => {
                     </div>
 
                     <div className="mt-8 flex justify-end pb-12">
-                        <Button className="px-4 sm:px-6 lg:px-8">
+                        <Button onClick={() => handleCheckout()} className="px-4 sm:px-6 lg:px-8">
                            Check out <ArrowRight className="h-4 w-4 ml-1.5 inline" />
                         </Button>
                     </div>

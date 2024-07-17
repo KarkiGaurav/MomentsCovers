@@ -6,7 +6,8 @@ import { FINISHES, MATERIALS } from "@/validators/option-validator"
 import { Order } from "@prisma/client"
 
 
-export const createCheckoutSession = async ({configId}:{ configId: String}) => {
+export const createCheckoutSession = async ({configId,}:{ configId: string}) => {
+   
      const configuration = await db.configuration.findUnique({
         where: { id: configId },
      })
@@ -14,9 +15,10 @@ export const createCheckoutSession = async ({configId}:{ configId: String}) => {
      if( !configuration ) {
         throw new Error('No such configuration not found')
      }
-
+ 
     const userSession = await auth()
     const user = userSession?.user
+    console.log(user);
 
     if( !user ) {
         throw new Error('No such user not found')
@@ -47,6 +49,7 @@ export const createCheckoutSession = async ({configId}:{ configId: String}) => {
         },
      })
 
+  if (typeof user.id === 'string') {
      if (existingOrder) {
         order = existingOrder
      } else {
@@ -58,6 +61,7 @@ export const createCheckoutSession = async ({configId}:{ configId: String}) => {
             },
         })
      }
+    }
 
      const product = await stripe.products.create({
         name: 'Custome iphone Case',
