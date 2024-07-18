@@ -6,7 +6,7 @@ export function SignIn() {
       <form
         action={async () => {
           "use server"
-          await signIn("google")
+          await signIn("google", { callbackUrl: "/thank-uou"})
         }}
         className="bg-white p-8 rounded-lg shadow-lg"
       >

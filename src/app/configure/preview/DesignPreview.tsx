@@ -10,11 +10,10 @@ import { useMutation } from "@tanstack/react-query"
 import { ArrowRight, Check } from "lucide-react"
 import { useEffect, useState } from "react"
 import Confetti from 'react-dom-confetti'
-import { createCheckoutSession } from "./action"
+import { createCheckoutSession } from "./actions"
 import { useRouter } from "next/navigation"
 import { useToast } from "@/components/ui/use-toast"
-import { auth } from "@/auth"
-import { useSession, SessionProvider } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import LoginModal from "@/components/LoginModal"
 
 const DesignPreview =  ({ configuration}: {configuration: Configuration}) => {
@@ -57,10 +56,10 @@ const DesignPreview =  ({ configuration}: {configuration: Configuration}) => {
             if (url) router.push(url)
             else throw new Error('Unable tp retrieve payment URL.')
         },
-        onError: () => {
+        onError: (error) => {
             toast({
                 title: 'Something went wrong',
-                description: 'There was an error on our end. Please try again.',
+                description: `There was an error on our end. Please try again. ${error}`,
                 variant: 'destructive',
             })
         }
