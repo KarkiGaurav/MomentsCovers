@@ -2,7 +2,6 @@ import { db } from "@/db"
 import { stripe } from "@/lib/stripe"
 import { headers } from "next/headers"
 import { NextResponse } from "next/server"
-import { Result } from "postcss"
 import Stripe from "stripe"
 
 export async function POST(req: Request) {

@@ -151,7 +151,7 @@ const DesignPreview =  ({ configuration}: {configuration: Configuration}) => {
                             <div className="flex items-center justify-between py-2" >
                                 <p className="font-semibold text-gray-900">Order Total</p>
 
-                                <p className="font-semibold text-gray-900">{totalPrice / 100}</p>
+                                <p className="font-semibold text-gray-900">{formatPrice(totalPrice / 100)}</p>
                             </div>
                         </div>
                     </div>

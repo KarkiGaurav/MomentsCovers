@@ -22,7 +22,6 @@ export const createCheckoutSession = async ({configId,}:{ configId: string}) => 
  
     const userSession = await auth()
     const user = userSession?.user
-    console.log("yyiui", user);
 
     if( !user ) {
         throw new Error('No such user not found')
