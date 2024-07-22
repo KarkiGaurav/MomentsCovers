@@ -4,21 +4,21 @@ import { Progress } from "@/components/ui/progress"
 import { useToast } from "@/components/ui/use-toast"
 import { useUploadThing } from "@/lib/uploadthing"
 import { cn } from "@/lib/utils"
-import { Image, Loader, MousePointerSquareDashed } from "lucide-react"
+import { Image as ImageIcon, Loader, MousePointerSquareDashed } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useState, useTransition } from "react"
 import Dropzone, { FileRejection } from 'react-dropzone'
 
 const Page = () => {
 
-   const toast = useToast()
+   const {toast} = useToast()
     const [isDragOver, setIsDragOver] = useState<Boolean>(false)
     const [uploadProgrss, setUploadProgrss] = useState<number>(0)
     const router = useRouter()
 
   const {startUpload, isUploading} = useUploadThing('imageUploader', {
    onClientUploadComplete: ([data]) => {
-      const configId = data.serverData.configId
+      const configId = data?.serverData?.configId
       startTransition(() => {
          router.push(`/configure/design?id=${configId}`)
       })
@@ -35,7 +35,7 @@ const Page = () => {
       toast({
          title:  `${file.file.type} type is not supported`,
          description : "Please choose a PNG, JPG, or JPEG image instead",
-         variant: 'destructive'
+         variant: 'destructive',
        })
     }
 
@@ -67,7 +67,7 @@ const Page = () => {
                        {isDragOver? (<MousePointerSquareDashed className='h-6 w-6 text-zinc-500 mb-2'/>): isUploading || isPending ? (
                         <Loader className="animate-spin h-6 w-6 text-zinc-500 mb-2" />
                        ):(
-                        <Image className="h-6 w-6 text-zinc-600 mb-2"/>
+                        <ImageIcon className="h-6 w-6 text-zinc-600 mb-2"/>
                        )}
 
                        <div className="flex flex-col justify-center mb-2 text-sm text-zinc-700 ">

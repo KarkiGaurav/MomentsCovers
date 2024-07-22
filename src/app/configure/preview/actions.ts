@@ -22,6 +22,7 @@ export const createCheckoutSession = async ({configId,}:{ configId: string}) => 
  
     const userSession = await auth()
     const user = userSession?.user
+    console.log('previewUser', user)
 
     if( !user ) {
         throw new Error('No such user not found')
@@ -74,7 +75,6 @@ export const createCheckoutSession = async ({configId,}:{ configId: string}) => 
             unit_amount: price,
         },
      })
-     const successUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/preview?id=${configuration.id}`
     try{
         const stripeSession = await stripe.checkout.sessions.create({
             success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/thank-you?orderId=${order?.id}`,

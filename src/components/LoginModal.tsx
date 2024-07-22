@@ -34,7 +34,7 @@ const LoginModal = ({
          <div className="grid grid-cols-2 gap-6 divide-x divide-gray-200">
           <Link href='/auth/login' className={buttonVariants({ variant:"outline"})}> Login</Link>
 
-          <Link href='/auth/login' className={buttonVariants({ variant:"default"})}> Register</Link>
+          <Link href='/auth/register' className={buttonVariants({ variant:"default"})}> Register</Link>
          </div>
       </DialogContent>
     </Dialog>

@@ -27,7 +27,7 @@ const DesignPreview =  ({ configuration}: {configuration: Configuration}) => {
     const [isLoginModalOpen, setIsLoginModalOpen ] = useState<boolean>(false)
 
     const [showConfetti, setShowConfetti] = useState<boolean>(false)
-    useEffect(() => setShowConfetti(true))
+    useEffect(() => setShowConfetti(true), [])
 
     const {id, color, material, model, finish, croppedImageUrl } = configuration
 
