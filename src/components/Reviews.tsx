@@ -156,7 +156,7 @@ const Reviews = () => {
       <img 
        aria-hidden='true'
        className="absolote select-none hidden xl:block -left-32 top-1/3"
-       src="/what-people-are-buying.png" />
+       src="/what-people-are-buying.png" alt="what-people-are-buying" />
       <ReviewGrid/>
     </MaxWidthWrapper>
   )

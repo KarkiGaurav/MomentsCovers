@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation"
 import { useToast } from "@/components/ui/use-toast"
 import { useSession } from 'next-auth/react';
 import LoginModal from "@/components/LoginModal"
+import { useCurrentUser } from "@/hooks/use-current-user"
 
 const DesignPreview =  ({ configuration}: {configuration: Configuration}) => {
 
@@ -22,7 +23,8 @@ const DesignPreview =  ({ configuration}: {configuration: Configuration}) => {
     const { toast } = useToast()
 
     const userSession = useSession()
-    const user = userSession?.data?.user
+    // const user = userSession?.data?.user
+    const user = useCurrentUser();
 
     const [isLoginModalOpen, setIsLoginModalOpen ] = useState<boolean>(false)
 
@@ -52,6 +54,7 @@ const DesignPreview =  ({ configuration}: {configuration: Configuration}) => {
     const { mutate: createPaymentSession} = useMutation({
         mutationKey: ['get-checkout-session'],
         mutationFn: createCheckoutSession,
+        // @ts-ignore
         onSuccess: ({ url }) => {
             if (url) router.push(url)
             else throw new Error('Unable tp retrieve payment URL.')

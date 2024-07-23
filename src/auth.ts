@@ -7,7 +7,7 @@ import { getAccountByUserId } from "./data/account";
 import authConfig from "../auth.config";
 
  
-export const { handlers : {GET, POST}, signIn, signOut, auth } = NextAuth({
+export const { handlers : {GET, POST}, signIn, signOut, auth, } = NextAuth({
 
   pages: {
     signIn: '/auth/login',
@@ -25,7 +25,6 @@ export const { handlers : {GET, POST}, signIn, signOut, auth } = NextAuth({
   callbacks: {
     async signIn({ user, account }) {
       // Allow OAuth without email verification
-      console.log('user=>', user)
       if (account?.provider !== "credentials") return true;
 
       const existingUser = await getUserById(user.id!);

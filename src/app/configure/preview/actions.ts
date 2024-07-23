@@ -6,6 +6,7 @@ import { db } from "@/db"
 import { stripe } from "@/lib/stripe"
 import { FINISHES, MATERIALS } from "@/validators/option-validator"
 import { Order } from "@prisma/client"
+import { Stripe } from "stripe"
 
 
 export const createCheckoutSession = async ({configId,}:{ configId: string}) => {
@@ -16,7 +17,6 @@ export const createCheckoutSession = async ({configId,}:{ configId: string}) => 
 
  
      if( !configuration ) {
-        console.log("configuration=>", configId)
         throw new Error('No such configuration not found')
      }
  
@@ -77,6 +77,7 @@ export const createCheckoutSession = async ({configId,}:{ configId: string}) => 
      })
     try{
         const stripeSession = await stripe.checkout.sessions.create({
+            // @ts-ignore
             success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/thank-you?orderId=${order?.id}`,
             cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/preview?id=${configuration.id}`,
             payment_method_types: ['card'],

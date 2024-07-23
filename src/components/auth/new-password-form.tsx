@@ -16,7 +16,6 @@ import {
   FormLabel,
   FormMessage,  
 } from "@/components/ui/form";
-import { CardWrapper } from "@/components/auth/card-wrapper"
 import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
@@ -51,11 +50,7 @@ export const NewPasswordForm = () => {
   };
 
   return (
-    <CardWrapper
-      headerLabel="Enter a new password"
-      backButtonLabel="Back to login"
-      backButtonHref="/auth/login"
-    >
+
       <Form {...form}>
         <form 
           onSubmit={form.handleSubmit(onSubmit)}
@@ -92,6 +87,5 @@ export const NewPasswordForm = () => {
           </Button>
         </form>
       </Form>
-    </CardWrapper>
   );
 };

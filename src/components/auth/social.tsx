@@ -1,7 +1,7 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { Github } from 'lucide-react';
+// import { Github } from 'lucide-react';
 import { useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
@@ -28,14 +28,14 @@ export const Social = () => {
         {/* <Google className="h-5 w-5" /> */}
         Google
       </Button>
-      <Button
+      {/* <Button
         size="lg"
         className="w-full"
         variant="outline"
         onClick={() => onClick("github")}
       >
         <Github className="h-5 w-5" />
-      </Button>
+      </Button> */}
     </div>
   );
 };

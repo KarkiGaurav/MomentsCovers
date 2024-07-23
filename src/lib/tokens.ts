@@ -59,15 +59,18 @@ export const generateVerificationToken = async (email: string) => {
 
   const existingToken = await getVerificationTokenByEmail(email);
 
+  try {
   if (existingToken) {
     await db.verificationToken.delete({
       where: {
         id: existingToken.id,
       },
     });
+  }else {
+    console.log('No existing token found.');
   }
 
-  try {
+  console.log('Creating new verification token...');
   const verficationToken = await db.verificationToken.create({
     data: {
       email,
@@ -76,10 +79,10 @@ export const generateVerificationToken = async (email: string) => {
     }
   });
 
-  console.log('registerVarificationtoken,', verficationToken)
-  await db.$disconnect();
-
+  // await db.$disconnect();
+  console.log('Created new verification token...', verficationToken);
   return verficationToken; 
+
 } catch (error) {
   console.error('Error storing verification token:', error);
   throw error;
