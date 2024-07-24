@@ -9,7 +9,8 @@ export const publicRoutes = [
     "/configure/upload",
     "/configure/design",
     "/configure/preview",
-    "/api/uploadthing"
+    "/api/uploadthing",
+    "/api/webhooks"
   ];
   
   /**
