@@ -131,7 +131,7 @@ export const RegisterForm = () => {
               </form>
               <div className="mt-4">
               <div className="text-center">
-                 <h2 className=""> <span className="opacity-[.5]">Already have an account?</span> <Link href='/auth/login' className="text-green-600 opacity-[1]">Sign in instead</Link> </h2>
+                 <h2 className=""> <span className="opacity-[.5]">Already have an account?</span> <Link href='/auth/login' className="text-red-700 opacity-[1]">Sign in instead</Link> </h2>
               </div>
               <div className="flex items-center w-full">
                 <hr className="flex-grow border-t border-gray-300" />

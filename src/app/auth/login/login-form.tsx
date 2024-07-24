@@ -146,7 +146,7 @@ export const LoginForm = () => {
 
             <div className="mt-4">
               <div className="text-center">
-                 <h2 className=""> <span className="opacity-[.5]">New on our platform? </span> <Link href='/auth/register' className="text-green-600 opacity-[1]">Create an account</Link> </h2>
+                 <h2 className=""> <span className="opacity-[.5]">New on our platform? </span> <Link href='/auth/register' className="text-red-700 opacity-[1]">Create an account</Link> </h2>
               </div>
               <div className="flex items-center w-full">
                 <hr className="flex-grow border-t border-gray-300" />

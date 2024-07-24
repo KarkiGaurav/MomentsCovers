@@ -95,7 +95,7 @@ const DesignPreview =  ({ configuration}: {configuration: Configuration}) => {
                     Your { modelLabel } Case
                 </h3>
                 <div className="mt-3 flex items-center gap-1.5 text-base">
-                    <Check className="w-4 h-4 text-green-500"/>
+                    <Check className="w-4 h-4 text-red-500"/>
                     In stock and ready to ship 
                 </div>
             </div>

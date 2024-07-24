@@ -15,7 +15,7 @@ const Navbar = async () => {
 
          <MaxWidthWrapper>
             <div className="flex h-14 items-center justify-between border-b border-zinc-200">
-               <Link href='/' className="flex z-40 font-semibold">Moments <span className="text-green-600">Covers</span>
+               <Link href='/' className="flex z-40 font-semibold" id="step1">Moments <span className="text-red-700">Covers</span>
                </Link>
 
                <div className="h-full flex items-center space-x-4">
@@ -62,13 +62,12 @@ const Navbar = async () => {
                         })}>Login</Link>
 
                         <div className="h-8 w-px bg-zinc-200 hidden sm:block" />
-                        <Link href='/configure/upload' className={buttonVariants({
+                        <Link href='/configure/upload' id="step2" className={buttonVariants({
                            size: 'sm',
                            className: 'hidden sm:flex items-center gap-1',
                         })}>Create Case
                            <ArrowRight className="ml-1.5 h-5 w-5" />
                         </Link>
-                        {/* </div> */}
 
                      </>
                   )
