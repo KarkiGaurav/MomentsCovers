@@ -51,7 +51,7 @@ const Navbar = async () => {
                      </>
                   ) : (
                      <>
-                        <Link href='/auth/register' className={buttonVariants({
+                        <Link href='/auth/register' id="step-1" className={buttonVariants({
                            size: 'sm',
                            variant: 'ghost',
                         })}>Sign up</Link>
@@ -62,7 +62,7 @@ const Navbar = async () => {
                         })}>Login</Link>
 
                         <div className="h-8 w-px bg-zinc-200 hidden sm:block" />
-                        <Link href='/configure/upload' id="step2" className={buttonVariants({
+                        <Link href='/configure/upload' id="step-2" className={buttonVariants({
                            size: 'sm',
                            className: 'hidden sm:flex items-center gap-1',
                         })}>Create Case

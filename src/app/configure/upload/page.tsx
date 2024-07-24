@@ -62,7 +62,7 @@ const Page = () => {
              >
               {
                  ({getRootProps, getInputProps})=> (
-                    <div className="h-full w-full flex-1 flex flex-col items-center justify-center"  {...getRootProps()}>
+                    <div className="h-full w-full flex-1 flex flex-col items-center justify-center" id="step-3" {...getRootProps()}>
                        <input {...getInputProps()} />
                        {isDragOver? (<MousePointerSquareDashed className='h-6 w-6 text-zinc-500 mb-2'/>): isUploading || isPending ? (
                         <Loader className="animate-spin h-6 w-6 text-zinc-500 mb-2" />

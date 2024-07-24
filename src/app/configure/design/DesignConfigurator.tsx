@@ -188,7 +188,7 @@ const DesignConfigurator = ({configId, imageDimensions, imageUrl} : DesignConfig
             <div aria-hidden='true' className="absolute z-10 inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white pointer-events-none"/>
 
             <div className="px-8 pb-12 pt-8">
-              <h2 className="tracking-tight font-bold text-3xl"> Customize your case</h2>
+              <h2 className="tracking-tight font-bold text-3xl" id='step-4'> Customize your case</h2>
                 
                 <div className="w-full h-px bg-zinc-200 my-6"/>
 
