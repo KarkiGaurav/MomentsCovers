@@ -43,7 +43,6 @@ export const RegisterForm = () => {
     startTransition(() => {
       register(values)
         .then((data) => {
-          console.log("data=>", data)
           setError(data.error);
           setSuccess(data.success);
         });
@@ -139,16 +138,13 @@ export const RegisterForm = () => {
                 <hr className="flex-grow border-t border-gray-300" />
               </div>
 
-
               <div className="mt-4">
                 <Social />
               </div>
             </div>
             </Form>
           </div>
-          {/* Right Side: Image */}
           <div className="w-full md:w-1/2 block bg-cover bg-center">
-            {/* You can replace the URL with the actual path to your image */}
             <img src='/signUp.jpg' className="object-cover min-w-full min-h-full" alt="Sign up hero Image" />
           </div>
         </div>

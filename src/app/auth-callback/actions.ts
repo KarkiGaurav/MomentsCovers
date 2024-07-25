@@ -6,7 +6,6 @@ import { db } from "@/db"
 export const getAuthStatus = async () => {
     const session = await auth()
     const user = session?.user
-    console.log('user:' ,user)
 
     if(!user?.id || !user.email) {
         throw new Error('Invalid user data')

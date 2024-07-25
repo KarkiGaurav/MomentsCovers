@@ -37,7 +37,6 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
 
   const verificationToken = await generateVerificationToken(email);
   if (verificationToken) { 
-    console.log("verificationToken=>", verificationToken)
     redirect(`${domain}/auth/login`);
   }
   // await sendVerificationEmail(

@@ -70,7 +70,6 @@ export const generateVerificationToken = async (email: string) => {
     console.log('No existing token found.');
   }
 
-  console.log('Creating new verification token...');
   const verficationToken = await db.verificationToken.create({
     data: {
       email,
@@ -80,7 +79,6 @@ export const generateVerificationToken = async (email: string) => {
   });
 
   // await db.$disconnect();
-  console.log('Created new verification token...', verficationToken);
   return verficationToken; 
 
 } catch (error) {

@@ -27,7 +27,7 @@ const PhonePreview = ({croppedImageUrl, color,} : {
         window.addEventListener('resize', handleResize)
     }, [ref.current])
 
-    let caseBackgroundColor = COLORS.find((supportedColor) => supportedColor.value === color)?.tw
+    let caseBackgroundColor = 'bg-'+COLORS.find((supportedColor) => supportedColor.value === color)?.tw
 
 
   return (

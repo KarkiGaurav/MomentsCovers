@@ -31,7 +31,6 @@ export const ourFileRouter = {
             croppedImageUrl: file.url,
           },
          })
-         console.log('Configuration saved:', configuration);
          return {configId: configuration.id}
        }catch(err){
         console.error('Error in Databse Configuration:', err);

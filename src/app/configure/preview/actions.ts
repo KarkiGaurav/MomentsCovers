@@ -6,7 +6,6 @@ import { db } from "@/db"
 import { stripe } from "@/lib/stripe"
 import { FINISHES, MATERIALS } from "@/validators/option-validator"
 import { Order } from "@prisma/client"
-import { Stripe } from "stripe"
 
 
 export const createCheckoutSession = async ({configId,}:{ configId: string}) => {
@@ -22,7 +21,6 @@ export const createCheckoutSession = async ({configId,}:{ configId: string}) => 
  
     const userSession = await auth()
     const user = userSession?.user
-    console.log('previewUser', user)
 
     if( !user ) {
         throw new Error('No such user not found')
