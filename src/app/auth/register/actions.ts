@@ -9,6 +9,7 @@ import { getUserByEmail } from "@/data/user";
 import { sendVerificationEmail } from "@/lib/mail";
 import { generateVerificationToken } from "@/lib/tokens";
 import { redirect } from "next/navigation";
+import { error } from "console";
 
 export const register = async (values: z.infer<typeof RegisterSchema>) => {
   const validatedFields = RegisterSchema.safeParse(values);
@@ -36,8 +37,11 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
   });
 
   const verificationToken = await generateVerificationToken(email);
+  
   if (verificationToken) { 
-    redirect(`${domain}/auth/login`);
+    redirect(`${domain}/auth/new-verification?token=${verificationToken.token}`);
+  }else{
+    return { error: "Something went wrong!" };
   }
   // await sendVerificationEmail(
   //   verificationToken.email,

@@ -46,9 +46,8 @@ export const login = async (
     );
 
      if (verificationToken) {
-    
-    redirect(`${domain}/auth/new-verification?token=${verificationToken.token}`);
-  }
+        redirect(`${domain}/auth/new-verification?token=${verificationToken.token}`);
+      }
     // await sendVerificationEmail(
     //   verificationToken.email,
     //   verificationToken.token,

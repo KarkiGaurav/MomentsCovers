@@ -17,10 +17,10 @@ export default function Home() {
              <div className="relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start">
                 <div className="absolute w-44 left-0 -top-24 hidden lg:block">
                 <div className='absolute inset-x-0 bottom-0 bg-gradient-to-t via-slate-50/50 from-slate-50 h-20' />
-                     <img src="/panda-1.png" className="w-full" alt="hero Image"/> 
+                     <img src="/panda.png" className="w-full" alt="hero Image"/> 
                 </div>
-                <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">Your Images on a <span className="bg-red-700 text-white px-2">Custome</span>Phone Case</h1>
-                <p className="mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-left text-blance md:text-wrap">Capture your favorite memories with your own,<span className="font-semibold"> one-of-of</span>phone case. 
+                <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">Your Images on a <span className="bg-red-700 text-white px-2">Custom</span>Phone Case</h1>
+                <p className="mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-left text-blance md:text-wrap">Capture your favorite memories with your own,<span className="font-semibold"> one-of-of</span>{' '}phone case. 
                 MomentsCovers allows you to protect your memories, not just your phone case.</p>
 
                 <ul className="mt-8 space-y-2 text-left font-medium flex flex-col items-center sm:items-start">
@@ -82,11 +82,11 @@ export default function Home() {
       {/* value proposition section */}
       <section className="bg-slate-100 py-24">
         <MaxWidthWrapper className="flex flex-col items-center gap-16 sm:gap-32">
-          <div className="flex flex-col lg:flex-row text-center gap-4 sm:gap-6">
+          <div className="flex flex-col lg:flex-row text-center gap-4 sm:gap-6 items-center">
               <h2 className="order-1 mt-2 tracking-tight text-balance !leading-tight font-bold text-5xl md:text-6xl">
                    what our <span className="relative px-2">customer <Icons.underline className='hidden sm:block pointer-events-none absolute inset-x-0 -bottom-6 text-red-500'/> </span>  say
               </h2>
-              <Image width={100} height={100} src="/snake-2.png" className="w-24 order-0 lg:order-2" alt="logo-2"/>
+              <Image width={100} height={100} src="/pandagrass.png" className="w-24 order-0 lg:order-2" alt="logo-2"/>
           </div>
 
           {/* Review Section (will make it dynamic later) */}

@@ -5,6 +5,7 @@ import "driver.js/dist/driver.css";
 import { useEffect } from 'react';
 
 const Tour: React.FC = () => {
+   
   useEffect(() => {
     const driverObj = driver({
       showProgress: true,
@@ -37,24 +38,24 @@ const Tour: React.FC = () => {
             align: 'start'
           }
         },
-        {
-          element: '#step-4',
-          popover: {
-            title: 'Customize Design',
-            description: 'Customize your design here by changing the color, material, finish, etc.',
-            side: 'bottom',
-            align: 'start'
-          }
-        },
-        {
-          element: '#step-5',
-          popover: {
-            title: 'Pay for Case',
-            description: 'Please click on the checkout button to continue the payment process.',
-            side: 'bottom',
-            align: 'start'
-          }
-        }
+        // {
+        //   element: '#step-4',
+        //   popover: {
+        //     title: 'Customize Design',
+        //     description: 'Customize your design here by changing the color, material, finish, etc.',
+        //     side: 'bottom',
+        //     align: 'start'
+        //   }
+        // },
+        // {
+        //   element: '#step-5',
+        //   popover: {
+        //     title: 'Pay for Case',
+        //     description: 'Please click on the checkout button to continue the payment process.',
+        //     side: 'bottom',
+        //     align: 'start'
+        //   }
+        // }
         
       ]
     });

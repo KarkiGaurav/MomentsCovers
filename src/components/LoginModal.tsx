@@ -17,7 +17,7 @@ const LoginModal = ({
       <DialogContent className='absolute z-[999999]' >
         <DialogHeader>
          <div className="relative mx-auto w-24 h-24 mb-2">
-          <Image src='/panda-1.png' alt='image' className="object-contain" fill />
+          <Image src='/panda.png' alt='image' className="object-contain" fill />
           </div> 
 
           <DialogTitle className="text-3xl text-center font-bold tracking-tight text-gray-900">

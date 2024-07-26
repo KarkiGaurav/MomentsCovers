@@ -73,12 +73,12 @@
   }
 
   .grainy-light {
-    background: #fffafa url() center center/cover no-repeat;
+    background: #fffafa;
   }
   
   /*i forgot this during the video, basically the same as above but darker*/
   .grainy-dark {
-    background: #fffafa url() center center/cover no-repeat;
+    background: #fffafa;
   }
 
   .driver-popover.driverjs-theme {

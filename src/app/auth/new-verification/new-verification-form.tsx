@@ -2,12 +2,13 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { BeatLoader } from "react-spinners";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { newVerification } from "@/app/auth/new-verification/actions";
 
 export const NewVerificationForm = () => {
+  const router = useRouter()
   const [error, setError] = useState<string | undefined>();
   const [success, setSuccess] = useState<string | undefined>();
 
@@ -37,6 +38,10 @@ export const NewVerificationForm = () => {
     onSubmit();
   }, [onSubmit]);
 
+
+  if(success) {
+    router.push(`/auth/login`)
+  }
   return (
     // <CardWrapper
     //   headerLabel="Confirming your verification"

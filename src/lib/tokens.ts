@@ -66,8 +66,6 @@ export const generateVerificationToken = async (email: string) => {
         id: existingToken.id,
       },
     });
-  }else {
-    console.log('No existing token found.');
   }
 
   const verficationToken = await db.verificationToken.create({
