@@ -13,7 +13,6 @@ import Confetti from 'react-dom-confetti'
 import { createCheckoutSession } from "./actions"
 import { useRouter } from "next/navigation"
 import { useToast } from "@/components/ui/use-toast"
-import { useSession } from 'next-auth/react';
 import LoginModal from "@/components/LoginModal"
 import { useCurrentUser } from "@/hooks/use-current-user"
 
@@ -22,8 +21,6 @@ const DesignPreview =  ({ configuration}: {configuration: Configuration}) => {
     const router = useRouter()
     const { toast } = useToast()
 
-    const userSession = useSession()
-    // const user = userSession?.data?.user
     const user = useCurrentUser();
 
     const [isLoginModalOpen, setIsLoginModalOpen ] = useState<boolean>(false)

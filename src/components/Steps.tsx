@@ -15,7 +15,7 @@ const STEPS = [
         url: '/design'
     },
     {
-        name: 'Step 3: Summary',
+        name: 'Step 3: Summary & Payment',
         description: 'Review your final design',
         url: '/preview'
     },
