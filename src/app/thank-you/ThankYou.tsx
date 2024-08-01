@@ -43,7 +43,7 @@ const ThankYou = () => {
       )
     }
 
-    const { configuration, billingAddress, shippingAddess, amount} = data
+    const { configuration, billingAddress, shippingAddress, amount} = data
     const { color, croppedImageUrl} = configuration
 
   return (
@@ -88,8 +88,8 @@ const ThankYou = () => {
 
                 <div className="mt-2 text-zinc-700">
                   <address className='not-italic' >
-                    <span className="block">{shippingAddess?.name}</span>
-                    <span className="block">{shippingAddess?.street}</span><span className="block">{shippingAddess?.postalCode} {shippingAddess?.city}</span>
+                    <span className="block">{shippingAddress?.name}</span>
+                    <span className="block">{shippingAddress?.street}</span><span className="block">{shippingAddress?.postalCode} {shippingAddress?.city}</span>
                   </address>
                 </div>
               </div>

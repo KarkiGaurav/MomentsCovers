@@ -88,18 +88,18 @@ model Account {
 }
 
 model VerificationToken {
-  id String @id @default(cuid())
-  email String
-  token String @unique
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
   expires DateTime
 
   @@unique([email, token])
 }
 
 model PasswordResetToken {
-  id String @id @default(cuid())
-  email String
-  token String @unique
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
   expires DateTime
 
   @@unique([email, token])
@@ -115,13 +115,13 @@ model Order {
   isPaid          Boolean       @default(false)
   status          OrderStatus   @default(awaiting_shipment)
 
-  shippingAddess    ShippingAddress? @relation(fields: [shippingAddressId], references: [id])
+  shippingAddress   ShippingAddress? @relation(fields: [shippingAddressId], references: [id])
   shippingAddressId String?
   billingAddress    BillingAddress?  @relation(fields: [billingAddressId], references: [id])
   billingAddressId  String?
 
-  createdAt DateTime @default(now())
-  updated   DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updated   DateTime? @updatedAt
 }
 
 model ShippingAddress {

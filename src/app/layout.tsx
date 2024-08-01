@@ -8,13 +8,11 @@ import Providers from "@/components/Providers";
 import { SessionProvider } from 'next-auth/react';
 import { auth } from '@/auth'
 import Tour from "@/components/Tour";
+import { constructMetadata } from "@/lib/utils";
 
 const recursive = Recursive({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "MomentsCover",
-  description: "Your Images on a CustomePhone Case",
-};
+export const metadata: Metadata = constructMetadata()
 
 export default async function RootLayout({
   children,
@@ -25,7 +23,7 @@ export default async function RootLayout({
   return (
     <SessionProvider session={session}>
       <html lang="en">
-      <link rel="icon" href="/icon.png" sizes="any" />
+      {/* <link rel="icon" href="/icon.png" sizes="any" /> */}
         <body className={recursive.className}>
           <Navbar />
           <Tour/>

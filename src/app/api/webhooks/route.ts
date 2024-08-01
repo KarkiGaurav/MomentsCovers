@@ -1,8 +1,12 @@
+import OrderReceivedEmail from "@/components/emails/OrderReceivedEmail"
 import { db } from "@/db"
 import { stripe } from "@/lib/stripe"
 import { headers } from "next/headers"
 import { NextResponse } from "next/server"
+import { Resend } from "resend"
 import Stripe from "stripe"
+
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(req: Request) {
     try {
@@ -44,7 +48,8 @@ export async function POST(req: Request) {
                 },
                 data: {
                     isPaid: true,
-                    shippingAddess : {
+                    shippingAddress : {
+                        // @ts-ignore
                         create: {
                             name: session.customer_details!.name!,
                             city: shippingAddress!.city!,
@@ -55,6 +60,7 @@ export async function POST(req: Request) {
                         }
                     },
                     billingAddress: {
+                        // @ts-ignore
                         create: {
                             name: session.customer_details!.name!,
                             city: billingAddress!.city!,
@@ -65,6 +71,26 @@ export async function POST(req: Request) {
                         },
                     },
                 },
+            })
+
+            await resend.emails.send({
+                from: 'MomentsCovers <singhkarkigaurav@gmail.com>',
+                to: [event.data.object.customer_details.email],
+                subject: 'Thanks for your order!',
+                react: OrderReceivedEmail({
+                    orderId,
+                    // @ts-ignore
+                    orderDate: updateOrder.createdAt.loLocaleDateString(),
+                   // @ts-ignore
+                    shippingAddress: {
+                        name: session.customer_details!.name!,
+                        city: billingAddress!.city!,
+                        country: billingAddress!.country!,
+                        postalCode: billingAddress!.postal_code!,
+                        street: billingAddress!.line1!,
+                        state: billingAddress!.state,
+                    }
+                })
             })
         }
 

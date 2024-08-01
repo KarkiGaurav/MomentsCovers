@@ -14,7 +14,7 @@ export const getPaymentStatus = async ( { orderId } : {orderId: string}) => {
         where: { id: orderId, userId: user.id },
         include: { 
             billingAddress: true,
-            shippingAddess: true,
+            shippingAddress: true,
             configuration: true,
             user: true,
          }

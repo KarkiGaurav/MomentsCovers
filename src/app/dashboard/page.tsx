@@ -1,19 +1,20 @@
 
+import { auth } from "@/auth"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
-import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { db } from "@/db"
-import { useCurrentUser } from "@/hooks/use-current-user"
 import { formatPrice } from "@/lib/utils"
 import { notFound } from "next/navigation"
+import StatusDropdown from "./StatusDropdown"
 
 const Page = async () => {
 
-    const user = useCurrentUser()
-
-    if (!user || user.role !== 'ADMIN') {
-        return notFound()
-    }
+  const userSession = await auth()
+  const user = userSession?.user
+    // if (!user || user.role !== 'ADMIN') {
+    //     return notFound()
+    // }
 
     const orders =  await db.order.findMany({
         where: {
@@ -27,7 +28,7 @@ const Page = async () => {
         },
         include: {
           user: true,
-          shippingAddess: true,
+          shippingAddress: true,
         },
     })
 
@@ -56,12 +57,12 @@ const Page = async () => {
     })
 
     const WEEKLY_GOLE = 500
-    const MONTHLY_GOLE = 2500
+    const MONTHLY_GOAL = 2500
 
   return (
-    <div className="flex min-h-screen w-full bg-muted/40" >
+    <div className="flex min-h-screen w-full bg-muted/40 mt-10" >
       <div className="max-w-7xl w-full mx-auto flex flex-col sm:gap-4">
-        <div className="flex flex-col fap-16">
+        <div className="flex flex-col gap-16">
           <div className="grid gap-4 sm:grid-cols-2">
             <Card>
               <CardHeader className="pb-2">
@@ -69,17 +70,17 @@ const Page = async () => {
                   Last Week
                 </CardDescription>
                 <CardTitle className="text-4xl">
-                  {formatPrice(lastWeekSum._sum.amount ?? 0)}
+                  {formatPrice(lastWeekSum._sum?.amount ?? 0)}
                 </CardTitle>
               </CardHeader>
 
               <CardContent>
                 <div className="text-sm text-muted-foreground">
-                  of {formatPrice(WEEKLY_GOLE)} gole
+                  of {formatPrice(WEEKLY_GOLE)} goal
                 </div>
               </CardContent>
               <CardFooter>
-                <Progress value={((lastWeekSum._sum.amount ?? 0) * 100) / WEEKLY_GOLE}/>
+                <Progress value={((lastWeekSum._sum?.amount ?? 0) * 100) / WEEKLY_GOLE}/>
               </CardFooter>
             </Card>
 
@@ -89,17 +90,17 @@ const Page = async () => {
                   Last Month
                 </CardDescription>
                 <CardTitle className="text-4xl">
-                  {formatPrice((lastMonthSum)._sum.amount ?? 0)}
+                  {formatPrice(lastMonthSum._sum?.amount ?? 0)}
                 </CardTitle>
               </CardHeader>
 
               <CardContent>
                 <div className="text-sm text-muted-foreground">
-                  of {formatPrice(MONTHLY_GOLE)} gole
+                  of {formatPrice(MONTHLY_GOAL)} goal
                 </div>
               </CardContent>
               <CardFooter>
-                <Progress value={((lastMonthSum._sum.amount ?? 0) * 100) / MONTHLY_GOLE}/>
+                <Progress value={((lastMonthSum._sum?.amount ?? 0) * 100) / MONTHLY_GOAL}/>
               </CardFooter>
             </Card>
           </div>
@@ -119,6 +120,23 @@ const Page = async () => {
             <TableBody>
               {orders.map((order) => (
                 <TableRow key={order.id} className="bg-accent">
+                  <TableCell>
+                    <div className="font-medium">
+                      {order.shippingAddress?.name}
+                    </div>
+                    <div className="hidden text-sm text-muted-foreground md:inline">
+                      {order.user.email}
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                  <StatusDropdown id={order.id} orderStatus={order.status}/>
+                  </TableCell>
+                  <TableCell className="hidden sm:table-cell">
+                    {order.createdAt.toLocaleDateString()}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    {formatPrice(order.amount)}
+                  </TableCell>
 
                 </TableRow>
 
