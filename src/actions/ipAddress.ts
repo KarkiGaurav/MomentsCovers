@@ -10,10 +10,8 @@ export const checkUserIp = async (): Promise<boolean> => {
    
     if (forwardedFor) {
       ip = forwardedFor.split(',')[0] ?? FALLBACK_IP_ADDRESS
-      console.log('ip=>', ip)
     }else {
       ip = headers().get('x-real-ip') ?? FALLBACK_IP_ADDRESS
-      console.log('ip==>', ip)
     }
 
    const existingUserIp = await db.ipAddress.findFirst({

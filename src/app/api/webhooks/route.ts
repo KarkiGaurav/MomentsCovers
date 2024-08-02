@@ -79,19 +79,19 @@ export async function POST(req: Request) {
                 subject: 'Thanks for your order!',
                 react: OrderReceivedEmail({
                     orderId,
+                    orderDate: updateOrder.createdAt.toLocaleDateString(),
                     // @ts-ignore
-                    orderDate: updateOrder.createdAt.loLocaleDateString(),
-                   // @ts-ignore
                     shippingAddress: {
-                        name: session.customer_details!.name!,
-                        city: billingAddress!.city!,
-                        country: billingAddress!.country!,
-                        postalCode: billingAddress!.postal_code!,
-                        street: billingAddress!.line1!,
-                        state: billingAddress!.state,
+                        name: session.customer_details?.name ?? 'N/A',
+                        city: billingAddress?.city ?? 'N/A',
+                        country: billingAddress?.country ?? 'N/A',
+                        postalCode: billingAddress?.postal_code ?? 'N/A',
+                        street: billingAddress?.line1 ?? 'N/A',
+                        state: billingAddress?.state ?? 'N/A',
                     }
                 })
             })
+            
         }
 
         return NextResponse.json({ result: event, ok: true})
