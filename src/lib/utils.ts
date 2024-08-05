@@ -22,11 +22,13 @@ export function constructMetadata({
   description = 'Create custom high-quality phone cases in seconds',
   image = '/Momentscovers.png',
   icons = '/icon.png',
+  manifest = '/manifest.webmanifest'
 }: {
   title?: string
   description?: string
   image?: string
   icons?: string
+  manifest?: string
 } = {}): Metadata {
   return {
     title,
@@ -44,6 +46,7 @@ export function constructMetadata({
       creator: '@karkiGaurav',
     },
     icons,
+    manifest,
     metadataBase: new URL("https://moments-covers.vercel.app/")
   }
 }
