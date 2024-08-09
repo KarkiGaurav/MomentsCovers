@@ -151,4 +151,5 @@ model BillingAddress {
 model IpAddress {
   id          String @id @default(cuid())
   ip          String
+  createdAt   DateTime  @default(now())
 }
