@@ -23,14 +23,15 @@ export default async function RootLayout({
   return (
     <SessionProvider session={session}>
       <html lang="en">
-      {/* <link rel="icon" href="/icon.png" sizes="any" /> */}
         <body className={recursive.className}>
+     
           <Navbar />
           <Tour/>
           <main className="flex grainy-light flex-col min-h-[calc(100vh-3.5rem-1px)]">
             <div className="flex-1 flex flex-col h-full">
               <Providers>
-                {children}
+                 {children}
+
               </Providers>
             </div>
             <Footer />

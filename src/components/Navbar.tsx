@@ -11,6 +11,7 @@ import {
  } from "./ui/hover-card"
 import { Avatar } from "@radix-ui/react-avatar";
 import { AvatarFallback, AvatarImage } from "./ui/avatar";
+import ThemeSwitch from "./ThemeSwitch";
  
 
 const Navbar = async () => {
@@ -118,6 +119,7 @@ const Navbar = async () => {
                      </>
                   )
                   )}
+                  <ThemeSwitch/>
                </div>
             </div>
          </MaxWidthWrapper>
