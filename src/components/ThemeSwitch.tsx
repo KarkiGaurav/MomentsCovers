@@ -12,7 +12,6 @@ import {
 const ThemeSwitch = () => {
     const { theme, setTheme } = useTheme()
 
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -21,9 +20,7 @@ const ThemeSwitch = () => {
             <SunIcon className="w-5 h-5" />
           ) : (
             <MoonIcon className="w-5 h-5" />
-          )
-        }
-       <SunIcon/>
+          )}
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuSeparator />
@@ -32,7 +29,7 @@ const ThemeSwitch = () => {
           <DropdownMenuRadioItem onClick={() => {setTheme('system')}} value="right">System</DropdownMenuRadioItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 
 }
 

@@ -72,14 +72,14 @@
     transform: perspective(400px) rotateY(3deg) skewX(11.1deg) skewY(-10.9deg);
   }
 
-  .grainy-light {
+  /* .grainy-light {
     background: #fffafa;
-  }
+  } */
   
   /*i forgot this during the video, basically the same as above but darker*/
-  .grainy-dark {
+  /* .grainy-dark {
     background: #fffafa;
-  }
+  } */
 
   .driver-popover.driverjs-theme {
     background-color: #dc2627;

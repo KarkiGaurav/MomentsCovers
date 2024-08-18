@@ -9,6 +9,7 @@ import { SessionProvider } from 'next-auth/react';
 import { auth } from '@/auth'
 import Tour from "@/components/Tour";
 import { constructMetadata } from "@/lib/utils";
+import { ThemeProvider } from "next-themes";
 
 const recursive = Recursive({ subsets: ["latin"] });
 
@@ -24,19 +25,19 @@ export default async function RootLayout({
     <SessionProvider session={session}>
       <html lang="en">
         <body className={recursive.className}>
-     
-          <Navbar />
-          <Tour/>
-          <main className="flex grainy-light flex-col min-h-[calc(100vh-3.5rem-1px)]">
-            <div className="flex-1 flex flex-col h-full">
-              <Providers>
-                 {children}
-
-              </Providers>
-            </div>
-            <Footer />
-          </main>
-          <Toaster />
+          <ThemeProvider>
+            <Navbar />
+            <Tour />
+            <main className="flex grainy-light flex-col min-h-[calc(100vh-3.5rem-1px)]">
+              <div className="flex-1 flex flex-col h-full">
+                <Providers>
+                  {children}
+                </Providers>
+              </div>
+              <Footer />
+            </main>
+            <Toaster />
+          </ThemeProvider>
         </body>
       </html>
     </SessionProvider>
