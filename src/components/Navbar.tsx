@@ -51,7 +51,7 @@ const Navbar = async () => {
                         >
                         <HoverCard>
                            <HoverCardTrigger>
-                           <img src={userImage} alt="profile" className="h-10 w-14 rounded-full" />
+                           <img src={userImage} alt="profile" className="h-10 rounded-full" />
                            </HoverCardTrigger>
                            <HoverCardContent className="p-4 bg-white border border-gray-200 rounded-lg shadow-lg">
                            <div className="flex flex-col justify-between space-x-1">
@@ -60,7 +60,7 @@ const Navbar = async () => {
                                  <AvatarImage className="h-10 w-16" src={userImage} />
                                  <AvatarFallback>Profile</AvatarFallback>
                               </Avatar>
-                              <div className="flex flex-col">
+                              <div className="flex flex-col ml-1">
                                    <h4 className="text-sm font-semibold">{user.name}</h4>
                                  <span className="text-xs text-gray-500">{user.email}</span>
                               </div>

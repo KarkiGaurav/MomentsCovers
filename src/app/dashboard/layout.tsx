@@ -142,35 +142,29 @@ const layout = ({
                 <span className="sr-only">Momemts Covers</span>
               </Link>
               <Link
-                href="#"
+                href="/dashboard"
                 className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
               >
                 <Home className="h-5 w-5" />
                 Dashboard
               </Link>
               <Link
-                href="#"
+                href="/dashboard/orders"
                 className="flex items-center gap-4 px-2.5 text-foreground"
               >
                 <ShoppingCart className="h-5 w-5" />
                 Orders
               </Link>
+
               <Link
-                href="#"
-                className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-              >
-                <Package className="h-5 w-5" />
-                Products
-              </Link>
-              <Link
-                href="#"
+                href="/dashboard/customers"
                 className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
               >
                 <Users2 className="h-5 w-5" />
                 Customers
               </Link>
               <Link
-                href="#"
+                href="/dashboard/profile"
                 className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
               >
                 <LineChart className="h-5 w-5" />
@@ -179,7 +173,7 @@ const layout = ({
             </nav>
           </SheetContent>
         </Sheet>
-        <Breadcrumb className="hidden md:flex">
+        {/* <Breadcrumb className="hidden md:flex">
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
@@ -197,7 +191,7 @@ const layout = ({
               <BreadcrumbPage>Recent Orders</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
-        </Breadcrumb>
+        </Breadcrumb> */}
         {/* <div className="relative ml-auto flex-1 md:grow-0">
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
