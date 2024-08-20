@@ -1,4 +1,6 @@
 import { auth } from "@/auth"
+import Popover from "@/components/Popover"
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -15,9 +17,23 @@ const Page = async () => {
 
   const userSession = await auth()
   const currentUser = userSession?.user
-  const user = db.user.findFirst({where:{
+  const user = await db.user.findFirst({where:{
     email : currentUser?.email
   }})
+
+  const purchase = await db.order.aggregate({
+    where: {
+      isPaid: true,
+      user: {
+        email: user?.email
+      }
+      
+    },
+    _count: {
+      id: true
+    }
+  })
+
 
   return (
     <Card className="mx-14">
@@ -28,14 +44,15 @@ const Page = async () => {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           <div className="grid gap-3">
             <Label htmlFor="name">Name</Label>
             <Input
               id="name"
               type="text"
               className="w-full"
-              defaultValue='j'
+              defaultValue={user?.name}
+          
             />
           </div>
           <div className="grid gap-3">
@@ -44,7 +61,8 @@ const Page = async () => {
               id="email"
               type="email"
               className="w-full"
-              defaultValue="youremail@gmail.com"
+              defaultValue={user?.email}
+              disabled
             />
           </div>
           <div className="grid ">
@@ -62,7 +80,8 @@ const Page = async () => {
               id="item"
               type="text"
               className="w-full"
-              defaultValue="0"
+              defaultValue={purchase._count?.id ?? 0}
+              disabled
             />
           </div>
 
@@ -73,6 +92,13 @@ const Page = async () => {
               defaultValue=""
               className="min-h-32"
             />
+          </div>
+
+          <div className="grid gap-1 max-w-fit mt-7 ">
+            <Button variant={"default"} >Update profile </Button>
+
+            {/* <Button variant={"secondary"}>Update Password </Button> */}
+            <Popover/>
           </div>
         </div>
       </CardContent>
