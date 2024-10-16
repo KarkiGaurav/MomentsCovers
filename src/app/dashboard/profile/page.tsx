@@ -51,7 +51,7 @@ const Page = async () => {
               id="name"
               type="text"
               className="w-full"
-              defaultValue={user?.name}
+              defaultValue={user!.name!}
           
             />
           </div>
@@ -61,7 +61,7 @@ const Page = async () => {
               id="email"
               type="email"
               className="w-full"
-              defaultValue={user?.email}
+              defaultValue={user!.email!}
               disabled
             />
           </div>
